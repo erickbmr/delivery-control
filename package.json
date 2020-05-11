@@ -1,0 +1,22 @@
+{
+  "name": "delivery-control",
+  "version": "1.0.0",
+  "description": "An app for control money at delivery establishment",
+  "main": "main.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erickbmr/delivery-control.git"
+  },
+  "author": "Erick",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/erickbmr/delivery-control/issues"
+  },
+  "homepage": "https://github.com/erickbmr/delivery-control#readme",
+  "dependencies": {
+    "electron": "^8.2.5"
+  }
+}
