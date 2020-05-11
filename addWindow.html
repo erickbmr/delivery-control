@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="pt-BR">
+    <meta charset="UTF-8">
+    <title>Entrada</title>
+    
+  </head>
+
+  <body>
+
+    <form>
+
+      <div class="payment-choose input-field col s12">
+
+        <label>Pedido</label>
+  
+        <br>
+  
+        <select id="channel-option">
+  
+          <option value="" disabled selected>Escolha uma opção</option>
+          <option value="1">Aplicativo</option>
+          <option value="2">WhatsApp</option>
+          <option value="3">Presencial</option>
+  
+        </select>
+  
+        <br>
+        <br>
+  
+        <label>Forma de pagamento</label>
+  
+        <br>
+  
+        <select id="payment-option">
+  
+          <option value="" disabled selected>Escolha uma opção</option>
+          <option value="1">Cartão</option>
+          <option value="2">Dinheiro</option>
+          <option value="3">Pagamento Online</option>
+  
+        </select>
+  
+        <br><br>
+  
+        <label>Valor</label>
+        <input type="text" id="money-input" autofocus>
+  
+        <br><br><br><br>
+  
+      </div> 
+
+      <button type="submit">Registrar</button>
+
+    </form>
+
+    <script src="addSale.js"></script>
+
+  </body>
+
+</html>

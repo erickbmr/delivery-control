@@ -4,7 +4,7 @@
   "description": "An app for control money at delivery establishment",
   "main": "main.js",
   "scripts": {
-    "test": "start"
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/erickbmr/delivery-control#readme",
   "dependencies": {
-    "electron": "^8.2.5"
+    "electron": "^8.2.5",
+    "materialize-css": "^1.0.0-rc.2",
+    "requirejs": "^2.3.6"
   }
 }
