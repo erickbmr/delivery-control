@@ -9,14 +9,6 @@ let mainWindow;
 let addWindow;
 let outWindow;
 
-var cardAmount = 0;
-var cashAmmount  = 0; 
-var onlineAmount  = 0;
-var appAmount  = 0; 
-var wppAmount  = 0;
-var presAmount  = 0; 
-var salesQuantity  = 0;
-
 app.on('ready', () => {
 
     mainWindow = new BrowserWindow({
@@ -68,47 +60,17 @@ function createInputWindow()
     });
 }
 
-function handleTotalAmount(channel, type, value)
-{
-    if(channel == 1)
-    {
-        appAmount += value;
-
-        if(type == 3)
-        {
-            onlineAmount += value;
-            salesQuantity++;
-            return;
-        }
-
-    }
-    else if(channel == 2)
-    {
-        wppAmount += value;
-    }
-    else
-    {
-        presAmount += value;
-    }
-
-    if(type == 1)
-    {
-        cardAmount += value;
-        salesQuantity++;
-    }
-    else
-    {
-        cashAmmount += value;
-        salesQuantity++;
-    }
-   
-    return;
-}
+var total = 0;
 
 ipcMain.on('sale:add', function(e, sale)
 {
-    console.log(sale);
-   handleTotalAmount(sale[0], sale[1], sale[2]);
+    //0 => channel
+    //1 => payment type
+    //2 => payment value
+   total = total + 1;
+   sale.push(total);
+   console.log(sale);
+   //3 => sales number
    mainWindow.webContents.send('sale:add', sale);
    addWindow.close();
 });

@@ -12,10 +12,15 @@ function submitForm(e)
     const paymentType = document.querySelector('#payment-option').value;
     const paymentValue = document.querySelector('#money-input').value;
 
-    const sale = [saleChannel, paymentType, paymentValue];
+    if(!isNaN(Number(paymentValue)) && saleChannel != 0 && paymentType != 0)
+    {
+        //online payment only happens in app sale
+        if(paymentType == 3 && saleChannel != 1)
+            return;
+        
+        const sale = [saleChannel, paymentType, Number(paymentValue)];
 
-    ipcRenderer.send('sale:add', sale);
+        ipcRenderer.send('sale:add', sale);
+    }
 
 }
-
-
