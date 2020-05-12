@@ -15,15 +15,15 @@ function handleIncrement(sale)
 {
     if(sale[1] == 1)
     {
-        incrementCardAmount(sale[2]);
+        incrementSalesAmount(sale[2], cardAmount);
     }
     else if(sale[1] == 2)
     {
-        incrementMoneyAmount(sale[2]);
+        incrementSalesAmount(sale[2], moneyAmount);
     }
     else
     {
-        incrementOnlineAmount(sale[2]);
+        incrementSalesAmount(sale[2], onlineAmount);
     }
 }
 
@@ -39,77 +39,35 @@ function handleCheck(sale)
 
     if(sale[0] == 1)
     {
-        incrementSalesApp();
+        incrementSales(salesApp);
         handleIncrement(sale);
     }
 
     else if(sale[0] == 2)
     {
-        incrementSalesWpp();
+        incrementSales(salesWpp);
         handleIncrement(sale);
     }
 
     else
     {
-        incrementSalesPres();
+        incrementSales(salesPres);
         handleIncrement(sale);
     }
 }
 
-function incrementSalesTotal()
+function incrementSales(saleInstance)
 {
-    amount = salesTotal.innerHTML;
+    amount = saleInstance.innerHTML;
     amount++;
-    salesTotal.innerHTML = amount;
+    saleInstance.innerHTML = amount;
 }
 
-function incrementSalesPres()
+function incrementSalesAmount(newValue, saleInstance)
 {
-    amount = salesPres.innerHTML;
-    amount++;
-    salesPres.innerHTML = amount;
-}
-
-function incrementSalesApp()
-{
-    amount = salesApp.innerHTML;
-    amount++;
-    salesApp.innerHTML = amount;
-}
-
-function incrementSalesWpp()
-{
-    amount = salesWpp.innerHTML;
-    amount++;
-    salesWpp.innerHTML = amount;
-}
-
-function incrementSalesAmount(newValue)
-{
-    amount = salesAmount.innerHTML;
+    amount = saleInstance.innerHTML;
     amount = Number(amount) + newValue;
-    salesAmount.innerHTML = amount;
-}
-
-function incrementCardAmount(newValue)
-{
-    amount = cardAmount.innerHTML;
-    amount = Number(amount) + newValue;
-    cardAmount.innerHTML = amount;
-}
-
-function incrementMoneyAmount(newValue)
-{
-    amount = moneyAmount.innerHTML;
-    amount = Number(amount) + newValue;
-    moneyAmount.innerHTML = amount;
-}
-
-function incrementOnlineAmount(newValue)
-{
-    amount = onlineAmount.innerHTML;
-    amount = Number(amount) + newValue;
-    onlineAmount.innerHTML = amount;
+    saleInstance.innerHTML = amount;
 }
 
 ipcRenderer.on('sale:add', function(e, sale)
@@ -119,8 +77,8 @@ ipcRenderer.on('sale:add', function(e, sale)
     //2 => payment value
     //online payment c/ wpp and pres
     //
-    incrementSalesTotal();
-    incrementSalesAmount(sale[2]);
+    incrementSales(salesTotal);
+    incrementSalesAmount(sale[2], salesAmount);
     handleCheck(sale);
 });
       
