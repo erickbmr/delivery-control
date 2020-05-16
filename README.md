@@ -3,12 +3,12 @@ An app for control money at delivery establishment using Electron.
 
 ## Screenshots
 
-#### Main window
+### Main window
 
 ![main-window](assets/main-window-print.png)
 
 
-#### Add sale window
+### Add sale window
 
 ![sale-window](assets/add-window-print.png)
 
