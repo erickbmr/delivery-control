@@ -5,12 +5,12 @@ An app for control money at delivery establishment using Electron.
 
 #### Main window
 
-    ![main-window]('assets/main-window-print.png')
+![main-window]('assets/main-window-print.png')
 
 
 #### Add sale window
 
-    ![sale-window]('assets/add-window-print.png')
+![sale-window]('assets/add-window-print.png')
 
 
 
