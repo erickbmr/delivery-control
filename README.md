@@ -1,9 +1,9 @@
 # delivery-control
 An app for control money at delivery establishment using Electron.
 
-- [ ] Control all sales and inputs
+- [X] Control all sales and inputs
 - [ ] Control all spending
 - [ ] Plot information
-- [ ] Create styles
+- [X] Create styles
 
 In progress...
