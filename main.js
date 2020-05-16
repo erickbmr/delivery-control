@@ -5,15 +5,17 @@ const path = require('path');
 const {app, BrowserWindow, Menu, ipcMain, webContents } = electron;
 const { send } = webContents;
 
+// to set devtools, change for 'development'
+process.env.NODE_ENV = 'production';
+
 let mainWindow;
 let addWindow;
-let outWindow;
 
 app.on('ready', () => {
 
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 900,
+        height: 580,
         webPreferences:{
             nodeIntegration: true,
         }
@@ -42,7 +44,7 @@ function createInputWindow()
 {
     addWindow = new BrowserWindow({
         width: 250,
-        height: 350,
+        height: 270,
         webPreferences:{
             nodeIntegration: true,
         },
@@ -59,6 +61,7 @@ function createInputWindow()
         addWindow = null;
     });
 }
+
 
 var total = 0;
 
@@ -86,16 +89,6 @@ const mainMenuTemp = [
                 click(){
                     createInputWindow();
                 }
-            },
-            {
-                label: 'Saída',
-                accelerator: process.platform == 'darwin' ? 'Command+S':
-                'Ctrl+S'
-            },
-            {
-                label: 'Fechar caixa',
-                accelerator: process.platform == 'darwin' ? 'Command+F':
-                'Ctrl+F'
             },
             {
                 label: 'Sair',
