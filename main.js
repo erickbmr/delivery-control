@@ -72,7 +72,6 @@ ipcMain.on('sale:add', function(e, sale)
     //2 => payment value
    total = total + 1;
    sale.push(total);
-   console.log(sale);
    //3 => sales number
    mainWindow.webContents.send('sale:add', sale);
    addWindow.close();
