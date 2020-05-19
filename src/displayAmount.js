@@ -1,5 +1,7 @@
 const electron = require('electron');
 const {ipcRenderer} = electron; 
+
+//var for link html with js
 const salesTotal = document.querySelector('.sales-total');
 const salesPres = document.querySelector('.sales-pres');
 const salesApp = document.querySelector('.sales-app');
@@ -9,8 +11,10 @@ const cardAmount = document.querySelector('.card-amount');
 const moneyAmount = document.querySelector('.money-amount');
 const onlineAmount = document.querySelector('.online-amount');
 
+//total
 var amount = 0;
 
+//increment in html which sale registered
 function handleIncrement(sale)
 {
     if(sale[1] == 1)
@@ -27,6 +31,7 @@ function handleIncrement(sale)
     }
 }
 
+//check the channel and payment type from a sale and call increment function
 function handleCheck(sale)
 {
     //sale[0] => channel
@@ -56,6 +61,7 @@ function handleCheck(sale)
     }
 }
 
+//increment number of sales across all channels
 function incrementSales(saleGeneric)
 {
     amount = saleGeneric.innerHTML;
@@ -63,6 +69,7 @@ function incrementSales(saleGeneric)
     saleGeneric.innerHTML = amount;
 }
 
+//increment values of sales across all channels
 function incrementSalesAmount(newValue, saleGeneric)
 {
     amount = saleGeneric.innerHTML;
@@ -70,6 +77,7 @@ function incrementSalesAmount(newValue, saleGeneric)
     saleGeneric.innerHTML = amount;
 }
 
+//from a sale registered, this is called
 ipcRenderer.on('sale:add', function(e, sale)
 {
     //0 => channel

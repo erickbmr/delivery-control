@@ -5,9 +5,11 @@ const sale = document.querySelector('form');
 
 sale.addEventListener('submit', submitForm);
 
+//when the form is submitted
 function submitForm(e)
 {
     e.preventDefault();
+    //receive html information
     const saleChannel = document.querySelector('#channel-option').value;
     const paymentType = document.querySelector('#payment-option').value;
     const paymentValue = document.querySelector('#money-input').value;
@@ -20,6 +22,7 @@ function submitForm(e)
         
         const sale = [saleChannel, paymentType, Number(paymentValue)];
 
+        //submit a new sale to check 
         ipcRenderer.send('sale:add', sale);
     }
 

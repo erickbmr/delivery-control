@@ -11,6 +11,7 @@ process.env.NODE_ENV = 'production';
 let mainWindow;
 let addWindow;
 
+// open main window
 app.on('ready', () => {
 
     mainWindow = new BrowserWindow({
@@ -20,7 +21,8 @@ app.on('ready', () => {
             nodeIntegration: true,
         }
     });
-
+    
+    // load main html
     mainWindow.loadFile('mainWindow.html');
 
     mainWindow.loadURL(url.format({
@@ -29,17 +31,19 @@ app.on('ready', () => {
         slashes: true
     }));
 
+    //when press 'x', all quit
     mainWindow.on('closed', () => {
         app.quit();
     });
 
+    // build menu
     const mainMenu = Menu.buildFromTemplate(mainMenuTemp);
 
     Menu.setApplicationMenu(mainMenu);
 
 });
 
-
+// create window for input 
 function createInputWindow()
 {
     addWindow = new BrowserWindow({
@@ -51,6 +55,7 @@ function createInputWindow()
         title: 'Entrada'
     });
 
+    // load input window html
     addWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'addWindow.html'),
         protocol: 'file:',
@@ -62,21 +67,25 @@ function createInputWindow()
     });
 }
 
-
+// var for sum all sales
 var total = 0;
 
+// sale event
 ipcMain.on('sale:add', function(e, sale)
 {
-    //0 => channel
-    //1 => payment type
-    //2 => payment value
    total = total + 1;
    sale.push(total);
-   //3 => sales number
    mainWindow.webContents.send('sale:add', sale);
    addWindow.close();
+    //sale array
+    //[0] => channel
+    //[1] => payment type
+    //[2] => payment value
+    //[3] => sales number
+
 });
 
+// create main menu (top bar)
 const mainMenuTemp = [
     {
         label: 'Registrar',
@@ -91,8 +100,6 @@ const mainMenuTemp = [
             },
             {
                 label: 'Sair',
-                //if some_condition ?  code
-                //else : code
                 accelerator: process.platform == 'darwin' ? 'Command+Q':
                 'Ctrl+Q',
                 click(){
@@ -103,11 +110,13 @@ const mainMenuTemp = [
     }
 ];
 
+//set settings for mac plataform
 if(process.platform == 'darwin')
 {
     mainMenuTemp.unshift({});
 }
 
+//activate devtools out of production
 if(process.env.NODE_ENV !== 'production')
 {
     mainMenuTemp.push({
