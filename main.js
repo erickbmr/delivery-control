@@ -43,6 +43,11 @@ app.on('ready', () => {
 
 });
 
+function createOutputWindow()
+{
+    //TODO
+}
+
 // create window for input 
 function createInputWindow()
 {
