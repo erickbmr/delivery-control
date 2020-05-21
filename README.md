@@ -7,7 +7,7 @@ Language in app: PT-BR.
 
 To get started, clone the repo and install npm.
 
-Open a terminal:
+Open a terminal and:
 
 ```
 cd delivery-control
